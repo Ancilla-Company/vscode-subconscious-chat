@@ -145,7 +145,7 @@ export class ExternalIngestClient extends Disposable implements IExternalIngestC
 
 		/* __GDPR__
 			"externalIngestClient.post.error" : {
-				"owner": "copilot-core",
+				"owner": "subconscious-core",
 				"comment": "Logging when a external ingest request fails",
 				"path": { "classification": "SystemMetaData", "purpose": "FeatureInsight", "comment": "The API path that was called" },
 				"statusCode": { "classification": "SystemMetaData", "purpose": "FeatureInsight", "isMeasurement": true, "comment": "The response status code" }

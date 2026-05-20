@@ -6,9 +6,9 @@
 import { TextEditor } from 'vscode';
 
 /**
- * The API provided by the Copilot extension.
+ * The API provided by the Subconscious extension.
  */
-export interface CopilotExtensionApi {
+export interface SubconsciousExtensionApi {
 	/**
 	 *
 	 * @param editor - The optional text editor to select the scope in. If not provided, the active text editor will be used.

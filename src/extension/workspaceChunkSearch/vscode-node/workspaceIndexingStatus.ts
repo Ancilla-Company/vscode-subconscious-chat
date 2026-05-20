@@ -17,9 +17,9 @@ import { commandUri } from '../../linkify/common/commands';
 import { buildRemoteIndexCommandId } from './commands';
 
 
-const reauthenticateCommandId = '_copilot.workspaceIndex.signInAgain';
+const reauthenticateCommandId = '_subconscious.workspaceIndex.signInAgain';
 
-const codebaseSemanticSearchDocsLink = 'https://aka.ms/vscode-copilot-workspace-remote-index';
+const codebaseSemanticSearchDocsLink = 'https://aka.ms/vscode-subconscious-workspace-remote-index';
 
 interface WorkspaceIndexStateReporter {
 	readonly onDidChangeIndexState: Event<void>;
@@ -78,7 +78,7 @@ export class ChatStatusWorkspaceIndexingStatus extends Disposable {
 
 		this._statusReporter = workspaceChunkSearch;
 
-		this._statusItem = this._register(vscode.window.createChatStatusItem('copilot.workspaceIndexStatus'));
+		this._statusItem = this._register(vscode.window.createChatStatusItem('subconscious.workspaceIndexStatus'));
 		this._statusItem.title = statusTitle;
 
 		this._register(this._statusReporter.onDidChangeIndexState(() => this._updateStatusItem()));

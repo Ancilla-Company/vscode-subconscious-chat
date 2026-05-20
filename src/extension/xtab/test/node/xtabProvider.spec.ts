@@ -425,8 +425,8 @@ class MockInlineEditsModelService implements IInlineEditsModelService {
 // ============================================================================
 
 describe('pickSystemPrompt', () => {
-	it('returns systemPromptTemplate for CopilotNesXtab', () => {
-		expect(pickSystemPrompt(PromptingStrategy.CopilotNesXtab)).toBe(systemPromptTemplate);
+	it('returns systemPromptTemplate for SubconsciousNesXtab', () => {
+		expect(pickSystemPrompt(PromptingStrategy.SubconsciousNesXtab)).toBe(systemPromptTemplate);
 	});
 
 	it('returns systemPromptTemplate for undefined', () => {

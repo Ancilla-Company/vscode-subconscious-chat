@@ -7,10 +7,10 @@ import { TextEditor, window } from 'vscode';
 import { Copilot } from '../../../platform/inlineCompletions/common/api';
 import { ILanguageContextProviderService } from '../../../platform/languageContextProvider/common/languageContextProviderService';
 import { IScopeSelector } from '../../../platform/scopeSelection/common/scopeSelection';
-import { CopilotExtensionApi as ICopilotExtensionApi } from './api';
+import { SubconsciousExtensionApi as ISubconsciousExtensionApi } from './api';
 import { VSCodeContextProviderApiV1 } from './vscodeContextProviderApi';
 
-export class CopilotExtensionApi implements ICopilotExtensionApi {
+export class SubconsciousExtensionApi implements ISubconsciousExtensionApi {
 	public static readonly version = 1;
 
 	constructor(

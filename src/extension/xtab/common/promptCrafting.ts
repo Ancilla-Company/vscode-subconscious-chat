@@ -184,7 +184,7 @@ function getPostScript(strategy: PromptingStrategy | undefined, currentFilePath:
 			postScript = `Output a modified diff style format with the changes you want. Each change patch must start with \`<filename>:<line number>\` and then include some non empty "anchor lines" preceded by \`-\` and the new lines meant to replace them preceded by \`+\`. Put your changes in the order that makes the most sense, for example edits inside the code_to_edit region and near the user's <|cursor|> should always be prioritized. Output "<NO_EDIT>" if you don't have a good edit candidate.`;
 			break;
 		case PromptingStrategy.SimplifiedSystemPrompt:
-		case PromptingStrategy.CopilotNesXtab:
+		case PromptingStrategy.SubconsciousNesXtab:
 		case undefined:
 			postScript = `The developer was working on a section of code within the tags \`code_to_edit\` in the file located at \`${currentFilePath}\`. \
 Using the given \`recently_viewed_code_snippets\`, \`current_file_content\`, \`edit_diff_history\`, \`area_around_code_to_edit\`, and the cursor \

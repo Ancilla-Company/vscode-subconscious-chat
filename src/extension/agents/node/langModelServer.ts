@@ -218,8 +218,8 @@ export class LanguageModelServer implements ILanguageModelServer {
 							}
 						}
 						// Emit tool calls if present
-						if (delta.copilotToolCalls && delta.copilotToolCalls.length > 0) {
-							for (const call of delta.copilotToolCalls) {
+						if (delta.tool_calls && delta.tool_calls.length > 0) {
+							for (const call of delta.tool_calls) {
 								let input: object = {};
 								try { input = call.arguments ? JSON.parse(call.arguments) : {}; } catch { input = {}; }
 								const toolData: IAgentStreamBlock = {

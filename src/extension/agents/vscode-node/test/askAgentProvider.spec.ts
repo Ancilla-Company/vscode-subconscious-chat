@@ -129,7 +129,7 @@ suite('AskAgentProvider', () => {
 	});
 
 	test('applies model override from settings', async () => {
-		await mockConfigurationService.setConfig(ConfigKey.AskAgentModel, 'Claude Haiku 4.5 (copilot)');
+		await mockConfigurationService.setConfig(ConfigKey.AskAgentModel, 'Claude Haiku 4.5 (subconscious)');
 
 		const provider = createProvider();
 		const agents = await provider.provideCustomAgents({}, {} as any);
@@ -137,7 +137,7 @@ suite('AskAgentProvider', () => {
 		assert.equal(agents.length, 1);
 		const content = await getAgentContent(agents[0]);
 
-		assert.ok(content.includes('model: Claude Haiku 4.5 (copilot)'));
+		assert.ok(content.includes('model: Claude Haiku 4.5 (subconscious)'));
 	});
 
 	test('applies both additionalTools and model settings together', async () => {

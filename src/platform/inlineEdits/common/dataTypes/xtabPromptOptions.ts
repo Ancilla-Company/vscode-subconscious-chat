@@ -233,7 +233,7 @@ export enum PromptingStrategy {
 	/**
 	 * Original Xtab unified model prompting strategy.
 	 */
-	CopilotNesXtab = 'copilotNesXtab',
+	SubconsciousNesXtab = 'subconsciousNesXtab',
 	UnifiedModel = 'xtabUnifiedModel',
 	Codexv21NesUnified = 'codexv21nesUnified',
 	Nes41Miniv3 = 'nes41miniv3',
@@ -301,7 +301,7 @@ export namespace ResponseFormat {
 			case PromptingStrategy.Xtab275EditIntentShort:
 				return ResponseFormat.EditWindowWithEditIntentShort;
 			case PromptingStrategy.SimplifiedSystemPrompt:
-			case PromptingStrategy.CopilotNesXtab:
+			case PromptingStrategy.SubconsciousNesXtab:
 			case undefined:
 				return ResponseFormat.CodeBlock;
 			default:

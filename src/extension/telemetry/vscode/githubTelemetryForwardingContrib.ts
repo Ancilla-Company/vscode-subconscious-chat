@@ -5,6 +5,7 @@
 
 import { env } from 'vscode';
 import { getGitHubRepoInfoFromContext, GithubRepoId, IGitService } from '../../../platform/git/common/gitService';
+import { IConfigurationService, ConfigKey } from '../../../platform/configuration/common/configurationService';
 import { ITelemetryService } from '../../../platform/telemetry/common/telemetry';
 import { Disposable } from '../../../util/vs/base/common/lifecycle';
 import { IExtensionContribution } from '../../common/contributions';
@@ -13,11 +14,18 @@ export class GithubTelemetryForwardingContrib extends Disposable implements IExt
 	constructor(
 		@ITelemetryService private readonly _telemetryService: ITelemetryService,
 		@IGitService private readonly _gitService: IGitService,
+		@IConfigurationService private readonly _configurationService: IConfigurationService,
 	) {
 		super();
 
 		const channel = env.getDataChannel<IEditTelemetryData>('editTelemetry');
 		this._register(channel.onDidReceiveData((args) => {
+			// Don't forward telemetry to GitHub when Subconscious is configured
+			const subconsciousApiUrl = this._configurationService.getConfig(ConfigKey.Subconscious.ApiUrl);
+			if (subconsciousApiUrl) {
+				return;
+			}
+
 			const r = this._gitService.activeRepository.get();
 			const id = r ? getGitHubRepoInfoFromContext(r)?.id : undefined;
 			const data = translateToGithubProperties(args.data.data, id);

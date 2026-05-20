@@ -12,7 +12,7 @@ import { IExperimentationService } from '../../../platform/telemetry/common/null
 import { ChatExtGlobalPerfMark, markChatExtGlobal } from '../../../util/common/performance';
 import { IInstantiationServiceBuilder, InstantiationServiceBuilder } from '../../../util/common/services';
 import { IInstantiationService } from '../../../util/vs/platform/instantiation/common/instantiation';
-import { CopilotExtensionApi } from '../../api/vscode/extensionApi';
+import { SubconsciousExtensionApi } from '../../api/vscode/extensionApi';
 import { ContributionCollection, IExtensionContributionFactory } from '../../common/contributions';
 
 // ##################################################################################
@@ -82,11 +82,11 @@ export async function baseActivate(configuration: IExtensionActivationConfigurat
 
 	const result = {
 		getAPI(version: number) {
-			if (version > CopilotExtensionApi.version) {
+			if (version > SubconsciousExtensionApi.version) {
 				throw new Error('Invalid Copilot Chat extension API version. Please upgrade Copilot Chat.');
 			}
 
-			return instantiationService.createInstance(CopilotExtensionApi);
+			return instantiationService.createInstance(SubconsciousExtensionApi);
 		}
 	};
 	markChatExtGlobal(ChatExtGlobalPerfMark.DidActivate);

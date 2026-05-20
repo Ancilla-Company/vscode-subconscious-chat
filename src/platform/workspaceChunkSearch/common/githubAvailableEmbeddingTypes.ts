@@ -118,7 +118,7 @@ export class GithubAvailableEmbeddingTypesService implements IGithubAvailableEmb
 			response = await this._instantiationService.invokeFunction(getRequest, {
 				endpointOrUrl: { type: RequestType.EmbeddingsModels },
 				secretKey: token,
-				intent: 'copilot-panel',
+				intent: 'subconscious-panel',
 				requestId: generateUuid(),
 				additionalHeaders: getGithubMetadataHeaders(new CallTracker(), this._envService),
 			});

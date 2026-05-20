@@ -955,7 +955,9 @@ export class ChatMLFetcherImpl extends AbstractChatMLFetcher {
 			this._logService.debug(`modelMaxResponseTokens ${request.max_tokens ?? 2048}`);
 			this._logService.debug(`chat model ${chatEndpointInfo.model}`);
 
-			secretKey ??= copilotToken.token;
+			// Check for Subconscious API key override
+			const subconsciousApiKey = this._configurationService.getConfig(ConfigKey.Subconscious.ApiKey);
+			secretKey ??= subconsciousApiKey || copilotToken.token;
 			if (!secretKey) {
 				// If no key is set we error
 				const urlOrRequestMetadata = stringifyUrlOrRequestMetadata(chatEndpointInfo.urlOrRequestMetadata);

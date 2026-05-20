@@ -129,7 +129,7 @@ suite('PlanAgentProvider', () => {
 	});
 
 	test('applies model override from settings', async () => {
-		await mockConfigurationService.setConfig(ConfigKey.Deprecated.PlanAgentModel, 'Claude Haiku 4.5 (copilot)');
+		await mockConfigurationService.setConfig(ConfigKey.Deprecated.PlanAgentModel, 'Claude Haiku 4.5 (subconscious)');
 
 		const provider = createProvider();
 		const agents = await provider.provideCustomAgents({}, {} as any);
@@ -138,11 +138,11 @@ suite('PlanAgentProvider', () => {
 		const content = await getAgentContent(agents[0]);
 
 		// Should contain model override
-		assert.ok(content.includes('model: Claude Haiku 4.5 (copilot)'));
+		assert.ok(content.includes('model: Claude Haiku 4.5 (subconscious)'));
 	});
 
 	test('applies core default model when configured', async () => {
-		await mockConfigurationService.setNonExtensionConfig('chat.planAgent.defaultModel', 'Claude Haiku 4.5 (copilot)');
+		await mockConfigurationService.setNonExtensionConfig('chat.planAgent.defaultModel', 'Claude Haiku 4.5 (subconscious)');
 
 		const provider = createProvider();
 		const agents = await provider.provideCustomAgents({}, {} as any);
@@ -151,7 +151,7 @@ suite('PlanAgentProvider', () => {
 		const content = await getAgentContent(agents[0]);
 
 		// Should contain model override from core setting
-		assert.ok(content.includes('model: Claude Haiku 4.5 (copilot)'));
+		assert.ok(content.includes('model: Claude Haiku 4.5 (subconscious)'));
 	});
 
 	test('prefers core default model over extension setting', async () => {
@@ -323,7 +323,7 @@ suite('PlanAgentProvider', () => {
 	});
 
 	test('applies ImplementAgentModel to Start Implementation handoff', async () => {
-		await mockConfigurationService.setConfig(ConfigKey.ImplementAgentModel, 'Claude Haiku 4.5 (copilot)');
+		await mockConfigurationService.setConfig(ConfigKey.ImplementAgentModel, 'Claude Haiku 4.5 (subconscious)');
 
 		const provider = createProvider();
 		const agents = await provider.provideCustomAgents({}, {} as any);

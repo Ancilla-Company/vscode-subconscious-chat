@@ -867,6 +867,16 @@ export namespace ConfigKey {
 		export const AzureAuthType = defineSetting<AzureAuthMode>('chat.azureAuthType', ConfigType.Simple, AzureAuthMode.EntraId);
 	}
 
+	/**
+	 * Subconscious-specific settings for local AI backend integration.
+	 */
+	export namespace Subconscious {
+		/** URL of the local Subconscious API server */
+		export const ApiUrl = defineSetting<string>('subconscious.apiUrl', ConfigType.Simple, 'http://localhost:8000');
+		/** API key for authenticating with the Subconscious server */
+		export const ApiKey = defineSetting<string | undefined>('subconscious.apiKey', ConfigType.Simple, undefined);
+	}
+
 	export const Enable = defineSetting<{ [key: string]: boolean }>('enable', ConfigType.Simple, {
 		'*': true,
 		'plaintext': false,

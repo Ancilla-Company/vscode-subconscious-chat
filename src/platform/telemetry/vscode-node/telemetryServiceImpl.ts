@@ -27,7 +27,7 @@ export class TelemetryService extends BaseTelemetryService {
 		externalMSFTAIKey: string,
 		externalGHAIKey: string,
 		estrictedGHAIKey: string,
-		@IConfigurationService configService: IConfigurationService,
+		@IConfigurationService private readonly configService: IConfigurationService,
 		@ICopilotTokenStore tokenStore: ICopilotTokenStore,
 		@ICAPIClientService capiClientService: ICAPIClientService,
 		@IEnvService envService: IEnvService,
@@ -103,5 +103,23 @@ export class TelemetryService extends BaseTelemetryService {
 				});
 			});
 		}
+	}
+
+	sendGHTelemetryEvent(eventName: string, properties?: TelemetryEventProperties | undefined, measurements?: TelemetryEventMeasurements | undefined): void {
+		// Don't send GitHub telemetry when Subconscious is configured
+		const subconsciousApiUrl = this.configService.getConfig(ConfigKey.Subconscious.ApiUrl);
+		if (subconsciousApiUrl) {
+			return;
+		}
+		super.sendGHTelemetryEvent(eventName, properties, measurements);
+	}
+
+	sendMSFTTelemetryEvent(eventName: string, properties?: TelemetryEventProperties | undefined, measurements?: TelemetryEventMeasurements | undefined): void {
+		// Don't send Microsoft telemetry when Subconscious is configured
+		const subconsciousApiUrl = this.configService.getConfig(ConfigKey.Subconscious.ApiUrl);
+		if (subconsciousApiUrl) {
+			return;
+		}
+		super.sendMSFTTelemetryEvent(eventName, properties, measurements);
 	}
 }

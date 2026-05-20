@@ -91,7 +91,7 @@ export namespace GithubPromptHeaderAttributes {
 
 export enum Target {
 	VSCode = 'vscode',
-	GitHubCopilot = 'github-copilot'
+	Subconscious = 'subconscious'
 }
 
 export class PromptHeader {
@@ -345,7 +345,7 @@ export interface IHandOff {
 	readonly prompt: string;
 	readonly send?: boolean;
 	readonly showContinueOn?: boolean; // treated exactly like send (optional boolean)
-	readonly model?: string; // qualified model name to switch to (e.g., "GPT-5 (copilot)")
+	readonly model?: string; // qualified model name to switch to (e.g., "GPT-5 (subconscious)")
 }
 
 export interface IHeaderAttribute {

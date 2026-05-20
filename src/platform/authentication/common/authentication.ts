@@ -246,8 +246,20 @@ export abstract class BaseAuthenticationService extends Disposable implements IA
 	}
 	async getCopilotToken(force?: boolean): Promise<CopilotToken> {
 		try {
-			const token = await this._tokenManager.getCopilotToken(force);
+			let token = await this._tokenManager.getCopilotToken(force);
 			this._tokenStore.copilotToken = token;
+
+			// Check for Subconscious configuration and modify token if needed
+			const subconsciousApiKey = this._configurationService.getConfig(ConfigKey.Subconscious.ApiKey);
+			if (subconsciousApiKey) {
+				// Create a modified token that uses the Subconscious API key
+				token = new CopilotToken({
+					...token._info,
+					token: subconsciousApiKey
+				});
+				this._tokenStore.copilotToken = token;
+			}
+
 			this._copilotTokenError = undefined;
 			return token;
 		} catch (afterError) {

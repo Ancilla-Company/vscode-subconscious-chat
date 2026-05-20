@@ -47,7 +47,7 @@ export class InlineEditsModelService extends Disposable implements IInlineEditsM
 
 	private static readonly COPILOT_NES_XTAB_MODEL: ModelConfigurationWithSource = {
 		modelName: 'copilot-nes-xtab',
-		promptingStrategy: PromptingStrategy.CopilotNesXtab,
+		promptingStrategy: PromptingStrategy.SubconsciousNesXtab,
 		includeTagsInCurrentFile: true,
 		source: ModelSource.HardCodedDefault,
 		lintOptions: undefined,

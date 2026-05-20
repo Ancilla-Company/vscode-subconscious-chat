@@ -36,7 +36,8 @@ export class DomainService extends Disposable implements IDomainService {
 		// Updated configs that have to do with GHE Domains
 		if (
 			event.affectsConfiguration(`${CopilotConfigPrefix}.advanced`) ||
-			event.affectsConfiguration(EnterpriseURLConfig)
+			event.affectsConfiguration(EnterpriseURLConfig) ||
+			event.affectsConfiguration('subconscious')
 		) {
 			this._processCAPIModuleChange(this._tokenStore.copilotToken);
 		}
@@ -51,6 +52,13 @@ export class DomainService extends Disposable implements IDomainService {
 		if (proxyConfigUrl) {
 			proxyConfigUrl = proxyConfigUrl.replace(/\/$/, '');
 		}
+
+		// Check for Subconscious API URL override
+		const subconsciousApiUrl = this._configurationService.getConfig(ConfigKey.Subconscious.ApiUrl);
+		if (subconsciousApiUrl) {
+			capiConfigUrl = subconsciousApiUrl.replace(/\/$/, '');
+		}
+
 		const enterpriseValue = this._configurationService.getConfig(ConfigKey.Shared.AuthProvider) === AuthProviderId.GitHubEnterprise ? this._configurationService.getNonExtensionConfig<string>(EnterpriseURLConfig) : undefined;
 		const moduleToken = {
 			endpoints: {

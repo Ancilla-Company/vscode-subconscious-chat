@@ -58,8 +58,8 @@ const chatExtPrefix = 'code/chat/ext/';
  * **Extension Activation Duration** — cold-start time:
  * `code/chat/ext/willActivate` → `code/chat/ext/didActivate`
  *
- * **Copilot Token Wait** — authentication readiness blocking activation:
- * `code/chat/ext/willWaitForCopilotToken` → `code/chat/ext/didWaitForCopilotToken`
+ * **Subconscious Token Wait** — authentication readiness blocking activation:
+ * `code/chat/ext/willWaitForSubconsciousToken` → `code/chat/ext/didWaitForSubconsciousToken`
  */
 export const ChatExtPerfMark = {
 	/** Chat participant handler starts */
@@ -103,10 +103,10 @@ export const ChatExtGlobalPerfMark = {
 	WillActivate: 'willActivate',
 	/** Extension activation completes */
 	DidActivate: 'didActivate',
-	/** Waiting for Copilot token starts */
-	WillWaitForCopilotToken: 'willWaitForCopilotToken',
-	/** Copilot token received */
-	DidWaitForCopilotToken: 'didWaitForCopilotToken',
+	/** Waiting for Subconscious token starts */
+	WillWaitForSubconsciousToken: 'willWaitForSubconsciousToken',
+	/** Subconscious token received */
+	DidWaitForSubconsciousToken: 'didWaitForSubconsciousToken',
 } as const;
 
 export type ChatExtGlobalPerfMarkName = typeof ChatExtGlobalPerfMark[keyof typeof ChatExtGlobalPerfMark];

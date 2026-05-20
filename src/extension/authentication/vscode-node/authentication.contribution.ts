@@ -29,7 +29,7 @@ export class AuthenticationContrib extends Disposable {
  * This contribution ensures we have a token that is good enough for making API calls for current workspace.
  */
 class AuthUpgradeAsk extends Disposable {
-	private static readonly AUTH_UPGRADE_ASK_KEY = 'copilot.shownPermissiveTokenModal';
+	private static readonly AUTH_UPGRADE_ASK_KEY = 'subconscious.shownPermissiveTokenModal';
 
 	constructor(
 		@IAuthenticationService private readonly _authenticationService: IAuthenticationService,
@@ -38,7 +38,7 @@ class AuthUpgradeAsk extends Disposable {
 		@IAuthenticationChatUpgradeService private readonly _authenticationChatUpgradeService: IAuthenticationChatUpgradeService,
 	) {
 		super();
-		this._register(commands.registerCommand('github.copilot.chat.triggerPermissiveSignIn', async () => {
+		this._register(commands.registerCommand('subconscious.chat.triggerPermissiveSignIn', async () => {
 			await this._authenticationChatUpgradeService.showPermissiveSessionModal(true);
 		}));
 	}
@@ -54,7 +54,7 @@ class AuthUpgradeAsk extends Disposable {
 			await this._authenticationService.getCopilotToken();
 		} catch (error) {
 			// likely due to the user canceling the auth flow
-			this._logService.error(error, 'Failed to get copilot token');
+			this._logService.error(error, 'Failed to get subconscious token');
 		}
 
 		await Event.toPromise(
